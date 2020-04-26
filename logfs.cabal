@@ -1,0 +1,82 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: f48277d1650c4aa6de23f3d88c482ccc5b9e8fa549ce3df0a0caa8e8951407b4
+
+name:           logfs
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/davidwangd/logfs#readme>
+homepage:       https://github.com/davidwangd/logfs#readme
+bug-reports:    https://github.com/davidwangd/logfs/issues
+author:         Wang Yuanwei
+maintainer:     davidwangthu@gmail.com
+copyright:      2020 Author Wang Yuanwei
+license:        Apache2
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/davidwangd/logfs
+
+library
+  exposed-modules:
+      DirectoryEngine
+      Lib
+      Utils
+  other-modules:
+      Paths_logfs
+  hs-source-dirs:
+      src
+  build-depends:
+      HFuse ==0.2.5.0
+    , base >=4.7 && <5
+    , bytestring >=0.10
+    , cipher-des >=0.0.6
+    , split >=0.2.3
+    , time >=1.9
+    , unix >=2.7
+  default-language: Haskell2010
+
+executable logfs-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_logfs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HFuse ==0.2.5.0
+    , base >=4.7 && <5
+    , bytestring >=0.10
+    , cipher-des >=0.0.6
+    , logfs
+    , split >=0.2.3
+    , time >=1.9
+    , unix >=2.7
+  default-language: Haskell2010
+
+test-suite logfs-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_logfs
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HFuse ==0.2.5.0
+    , base >=4.7 && <5
+    , bytestring >=0.10
+    , cipher-des >=0.0.6
+    , logfs
+    , split >=0.2.3
+    , time >=1.9
+    , unix >=2.7
+  default-language: Haskell2010

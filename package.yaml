@@ -1,0 +1,54 @@
+name:                logfs
+version:             0.1.0.0
+github:              "davidwangd/logfs"
+license:             Apache2
+author:              "Wang Yuanwei"
+maintainer:          "davidwangthu@gmail.com"
+copyright:           "2020 Author Wang Yuanwei"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/davidwangd/logfs#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- HFuse == 0.2.5.0
+- bytestring >= 0.10
+- unix >= 2.7
+- split >= 0.2.3
+- time >= 1.9
+- cipher-des >= 0.0.6
+
+library:
+  source-dirs: src
+
+executables:
+  logfs-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - logfs
+
+tests:
+  logfs-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - logfs
